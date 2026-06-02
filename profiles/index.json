@@ -1,0 +1,28 @@
+{
+  "profiles": [
+    {
+      "id": "_template",
+      "name": "Blank Template",
+      "file": "_template.md",
+      "description": "Starting point for authoring your own profile."
+    },
+    {
+      "id": "southeast-asian-english",
+      "name": "Southeast Asian English (working profile)",
+      "file": "southeast-asian-english.md",
+      "description": "Shared written tendencies across Myanmar English and Colloquial Singapore English. Fork freely."
+    },
+    {
+      "id": "american-business-english",
+      "name": "American Business English — Plain-Language Tradition",
+      "file": "american-business-english.md",
+      "description": "Williams/Garner/Hemingway-lineage plain-language register for US professional writing."
+    },
+    {
+      "id": "gen-z-formal",
+      "name": "Gen-Z Formal Register (working profile)",
+      "file": "gen-z-formal.md",
+      "description": "Internet-native professional register: deliberate informality, sincerity-coded tone."
+    }
+  ]
+}
