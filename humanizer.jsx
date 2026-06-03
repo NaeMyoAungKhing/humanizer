@@ -18,9 +18,13 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 const MODEL = "claude-sonnet-4-5";          // change to whatever you have access to
 const API_VERSION = "2023-06-01";
-const PROFILES_INDEX = "/profiles/index.json";
-const MARK_SRC = "/assets/mark.webp";
-const MARK_FALLBACK = "/assets/mark.png";
+
+// Resolve URLs relative to the Vite base path so the same component works
+// at the repo root in dev and under a /humanizer/ subpath on GitHub Pages.
+const BASE = (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.BASE_URL) || "/";
+const PROFILES_INDEX = BASE + "profiles/index.json";
+const MARK_SRC = BASE + "assets/mark.webp";
+const MARK_FALLBACK = BASE + "assets/mark.png";
 
 const MODES = {
   professional: {
@@ -282,7 +286,7 @@ export default function Humanizer() {
       setProfileMd(override);
       return;
     }
-    fetch(`/profiles/${p.file}`)
+    fetch(`${BASE}profiles/${p.file}`)
       .then((r) => r.text())
       .then(setProfileMd)
       .catch((e) => setErr(`Could not load profile: ${e.message}`));
@@ -343,7 +347,7 @@ export default function Humanizer() {
     // Trigger re-fetch.
     setProfileId((id) => id);
     const p = profileList.find((p) => p.id === profileId);
-    if (p) fetch(`/profiles/${p.file}`).then((r) => r.text()).then(setProfileMd);
+    if (p) fetch(`${BASE}profiles/${p.file}`).then((r) => r.text()).then(setProfileMd);
   };
 
   return (
